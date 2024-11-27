@@ -1,0 +1,87 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #f7f9fc, #dbe2ef);
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 400px;
+    margin: 60px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1, h2 {
+    color: #2b2d42;
+    margin-bottom: 20px;
+}
+
+input, button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+input {
+    background-color: #edf2f4;
+    border: 1px solid #ccc;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid #8d99ae;
+    background-color: #f9fafb;
+}
+
+button {
+    background-color: #2b2d42;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #8d99ae;
+    transform: scale(1.02);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:last-of-type {
+    background-color: transparent;
+    color: #2b2d42;
+    border: 2px solid #2b2d42;
+}
+
+button:last-of-type:hover {
+    background-color: #2b2d42;
+    color: white;
+}
+
+.container p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}
+
+.container p a {
+    color: #2b2d42;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container p a:hover {
+    text-decoration: underline;
+}
