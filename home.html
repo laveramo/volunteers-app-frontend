@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteers App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Help Requests</h1>
+    <button onclick="showHelpRequestForm()">Create Help Request</button>
+
+    <div id="help-request-form" style="display: none;">
+        <h2>Create a New Help Request</h2>
+        <input type="text" id="request-title" placeholder="Title" required>
+        <textarea id="request-description" placeholder="Description" required></textarea>
+        <button onclick="createHelpRequest()">Submit</button>
+        <button onclick="hideHelpRequestForm()">Cancel</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Request by</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="help-requests-table">
+            <!-- Dynamic rows will be inserted here -->
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>

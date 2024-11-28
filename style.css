@@ -21,7 +21,7 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-input, button {
+input, button, textarea {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 10px;
@@ -31,12 +31,17 @@ input, button {
     font-size: 16px;
 }
 
-input {
+input, textarea {
     background-color: #edf2f4;
     border: 1px solid #ccc;
 }
 
-input:focus {
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+input:focus, textarea:focus {
     outline: none;
     border: 2px solid #8d99ae;
     background-color: #f9fafb;
@@ -84,4 +89,52 @@ button:last-of-type:hover {
 
 .container p a:hover {
     text-decoration: underline;
+}
+
+/* Tabla de Help Requests */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #8d99ae;
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    color: #2b2d42;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Formulario de Help Request */
+#help-request-form {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 400px;
+    text-align: center;
+}
+
+#help-request-form h2 {
+    color: #2b2d42;
+    margin-bottom: 10px;
 }

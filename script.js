@@ -34,8 +34,63 @@ async function login() {
     });
 
     if (response.ok) {
-        navigateTo('index.html');
+        navigateTo('home.html');
     } else {
         alert('Login failed!');
     }
 }
+
+const HR_apiUrl = "http://localhost:8085/api"; // Cambia este URL según tu servicio.
+
+async function loadHelpRequests() {
+    const response = await fetch(`${HR_apiUrl}/help-requests`);
+    if (response.ok) {
+        const helpRequests = await response.json();
+        const tableBody = document.getElementById('help-requests-table');
+        tableBody.innerHTML = ''; // Limpiar la tabla antes de actualizar.
+
+        helpRequests.forEach(request => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${request.requestedBy}</td>
+                <td>${request.title}</td>
+                <td>${new Date(request.date).toLocaleDateString()}</td>
+                <td>${request.status}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    } else {
+        alert('Failed to load help requests');
+    }
+}
+
+function showHelpRequestForm() {
+    document.getElementById('help-request-form').style.display = 'block';
+}
+
+function hideHelpRequestForm() {
+    document.getElementById('help-request-form').style.display = 'none';
+}
+
+async function createHelpRequest() {
+    const title = document.getElementById('request-title').value;
+    const description = document.getElementById('request-description').value;
+
+    const response = await fetch(`${HR_apiUrl}/help-requests`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, description })
+    });
+
+    if (response.ok) {
+        alert('Help Request created successfully!');
+        hideHelpRequestForm();
+        loadHelpRequests(); // Recargar la tabla después de crear.
+    } else {
+        alert('Failed to create Help Request');
+    }
+}
+
+// Llamar a la función para cargar las solicitudes cuando se cargue la página.
+document.addEventListener('DOMContentLoaded', loadHelpRequests);
+
