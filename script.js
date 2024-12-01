@@ -40,10 +40,10 @@ async function login() {
     }
 }
 
-const HR_apiUrl = "http://localhost:8085/api"; // Cambia este URL según tu servicio.
+const LHR_apiUrl = "http://localhost:8085/api"; // Cambia este URL según tu servicio.
 
 async function loadHelpRequests() {
-    const response = await fetch(`${HR_apiUrl}/help-requests`);
+    const response = await fetch(`${LHR_apiUrl}/list-help-requests/all`);
     if (response.ok) {
         const helpRequests = await response.json();
         const tableBody = document.getElementById('help-requests-table');
@@ -52,7 +52,7 @@ async function loadHelpRequests() {
         helpRequests.forEach(request => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${request.requestedBy}</td>
+                <td>${request.requestBy}</td>
                 <td>${request.title}</td>
                 <td>${new Date(request.date).toLocaleDateString()}</td>
                 <td>${request.status}</td>
@@ -72,14 +72,22 @@ function hideHelpRequestForm() {
     document.getElementById('help-request-form').style.display = 'none';
 }
 
+const HR_apiUrl = "http://localhost:8086/api";
 async function createHelpRequest() {
     const title = document.getElementById('request-title').value;
     const description = document.getElementById('request-description').value;
 
-    const response = await fetch(`${HR_apiUrl}/help-requests`, {
+    const requestBy = "admin"; 
+    const requestBody = {
+        title,
+        description,
+        requestBy 
+    };
+
+    const response = await fetch(`${HR_apiUrl}/helprequest`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title, description })
+        body: JSON.stringify(requestBody)
     });
 
     if (response.ok) {
